@@ -164,7 +164,7 @@ print(unique_list([1, 2, 2, 3, 4, 4, 5]))  # [1, 2, 3, 4, 5]
 
 # 11. Проверка палиндрома
 '''
-Палиндром — это слово, которое читается одинаково с обеих сторон.
+Палиндром — это слово, которое читается одинаково c обеих сторон.
 Примеры:
  • madam → True
  • racecar → True
@@ -212,7 +212,7 @@ def guess_the_number():
 Например, создаём два файла:
 
 functions.py
-(сюда помещаем весь код выше — задачи 1–13).
+(сюда помещаем весь код выше — задачи 1 - 13).
 
  main.py
 (сюда пишем тесты и импорт):
@@ -220,8 +220,7 @@ functions.py
 тестовый файл, где ты запускаешь все функции, 
 чтобы убедиться, что они работают правильно.
 '''
-from functions import grams_to_ounces, fahrenheit_to_celsius, 
-solve, filter_prime, sphere_volume
+from functions import grams_to_ounces, fahrenheit_to_celsius, solve, filter_prime, sphere_volume
 
 print(grams_to_ounces(10))        # тест задачи 1
 print(fahrenheit_to_celsius(100)) # тест задачи 2
