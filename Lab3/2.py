@@ -30,7 +30,7 @@ print(fahrenheit_to_celsius(100))  # 37.777...
 '''
 У нас на ферме 35 голов и 94 ноги. Сколько кур и кроликов?
 • У курицы: 1 голова и 2 ноги
-• У кролика: 1 голова и 4 ноги\
+• Укролика: 1 голова и 4 ноги\
 '''
 def solve(numheads, numlegs):
     for chickens in range(numheads + 1):  # пробуем все варианты кур
@@ -70,6 +70,7 @@ print(filter_prime([1, 2, 3, 4, 5, 11, 15]))  # [2, 3, 5, 11]
 чтобы получить все перестановки символов.
 '''
 from itertools import permutations
+import random
 
 def string_permutations(s):
     perms = permutations(s)
@@ -197,33 +198,11 @@ def guess_the_number():
     number = random.randint(1, 20)
 
     while True:
-        guess = int(input("Take a guess: "))
+        guess = int(input("Take a guess: ")) 
         if guess < number:
             print("Your guess is too low.")
         elif guess > number:
             print("Your guess is too high.")
         else:
             print(f"Good job, {name}! You guessed my number!")
-            break
-
-
-#14. Импорт функций в другой файл
-'''
-Например, создаём два файла:
-
-functions.py
-(сюда помещаем весь код выше — задачи 1 - 13).
-
- main.py
-(сюда пишем тесты и импорт):
-
-тестовый файл, где ты запускаешь все функции, 
-чтобы убедиться, что они работают правильно.
-'''
-from functions import grams_to_ounces, fahrenheit_to_celsius, solve, filter_prime, sphere_volume
-
-print(grams_to_ounces(10))        # тест задачи 1
-print(fahrenheit_to_celsius(100)) # тест задачи 2
-print(solve(35, 94))              # тест задачи 3
-print(filter_prime([1,2,3,4,5]))  # тест задачи 4
-print(sphere_volume(3))           # тест задачи 9
+            break   # теперь break внутри else
