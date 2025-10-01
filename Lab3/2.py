@@ -112,4 +112,119 @@ print(has_33([1, 3, 1, 3]))   # False
 print(has_33([3, 1, 3]))      # False
 
 
-#8. 
+#8. Проверка на "007" в правильном порядке 
+'''
+Мы проверяем, встречается ли в списке чисоа 0,0,7 в нужном порядке
+(не обязательно подряд но в правильной последовательности)
+'''
+def spy_game(nums):
+    code = [0, 0, 7]   # наша цель
+    for n in nums:
+        if n == code[0]:   # если нашли нужное число
+            code.pop(0)    # удаляем его из списка
+        if not code:       # если список пуст → нашли 0,0,7
+            return True
+    return False
+
+# Примеры
+print(spy_game([1, 2, 4, 0, 0, 7, 5]))  # True
+print(spy_game([1, 0, 2, 4, 0, 5, 7]))  # True
+print(spy_game([1, 7, 2, 0, 4, 5, 0]))  # False
+
+
+#9. Объём сферы
+'''
+Формула:
+V = 4/3 пr3
+
+Используем формулу объёма сферы и модуль math для числа π.
+'''
+import math
+
+def sphere_volume(r):
+    return (4/3) * math.pi * (r ** 3)
+
+# Пример
+print(sphere_volume(3))  # 113.097...
+
+
+#10. Новый список с уникальными элементами (без set)
+'''
+Мы проходим по списку и добавляем элементы в новый список только один раз.
+'''
+def unique_list(lst):
+    new_list = []
+    for item in lst:
+        if item not in new_list:  # добавляем только если такого ещё нет
+            new_list.append(item)
+    return new_list
+# Пример
+print(unique_list([1, 2, 2, 3, 4, 4, 5]))  # [1, 2, 3, 4, 5]
+
+
+# 11. Проверка палиндрома
+'''
+Палиндром — это слово, которое читается одинаково с обеих сторон.
+Примеры:
+ • madam → True
+ • racecar → True
+ • hello → False
+ • nurses run (если убрать пробелы) → True
+'''
+def is_palindrome(s):
+    s = s.replace(" ", "").lower()   # убираем пробелы и делаем нижний регистр
+    return s == s[::-1]
+
+
+#12. Гистограмма
+'''
+Мы выводим «звёздочки» по числу, которое есть в списке.
+То есть как маленькая диаграмма из звёздочек.
+'''
+def histogram(lst):
+    for num in lst:
+        print("*" * num)
+
+
+#13. Игра "Угадай число"
+'''
+Игра продолжается до тех пор, пока игрок не угадает правильное число.
+Интерактивная игра пока не угадаешь число.
+'''
+def guess_the_number():
+    name = input("Hello! What is your name?\n")
+    print(f"Well, {name}, I am thinking of a number between 1 and 20.")
+    number = random.randint(1, 20)
+
+    while True:
+        guess = int(input("Take a guess: "))
+        if guess < number:
+            print("Your guess is too low.")
+        elif guess > number:
+            print("Your guess is too high.")
+        else:
+            print(f"Good job, {name}! You guessed my number!")
+            break
+
+
+#14. Импорт функций в другой файл
+'''
+Например, создаём два файла:
+
+functions.py
+(сюда помещаем весь код выше — задачи 1–13).
+
+ main.py
+(сюда пишем тесты и импорт):
+
+тестовый файл, где ты запускаешь все функции, 
+чтобы убедиться, что они работают правильно.
+'''
+from functions import grams_to_ounces, fahrenheit_to_celsius, 
+solve, filter_prime, sphere_volume
+
+print(grams_to_ounces(10))        # тест задачи 1
+print(fahrenheit_to_celsius(100)) # тест задачи 2
+print(solve(35, 94))              # тест задачи 3
+print(filter_prime([1,2,3,4,5]))  # тест задачи 4
+print(sphere_volume(3))           # тест задачи 9
