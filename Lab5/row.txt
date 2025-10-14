@@ -1,0 +1,61 @@
+#Topics covered in this lab work
+1. Python RegEx (Регулярные выражения в Python)
+import re
+
+# 1. Найти строку, содержащую 'a' с последующими нулем или более 'b'
+pattern1 = r'ab*'
+test_strings = ['a', 'ab', 'abb', 'ac', 'b']
+for s in test_strings:
+    if re.fullmatch(pattern1, s):
+        print("1:", s, "→ match")
+
+# 2️. Найти строку, содержащую 'a' с последующими двумя или тремя 'b'
+pattern2 = r'ab{2,3}'
+for s in ['ab', 'abb', 'abbb', 'abbbb']:
+    if re.fullmatch(pattern2, s):
+        print("2:", s, "→ match")
+
+# 3️.  Найти последовательности строчных букв, соединённых подчёркиванием
+pattern3 = r'[a-z]+_[a-z]+'
+text3 = "some_text otherText another_example"
+print("3:", re.findall(pattern3, text3))
+
+# 4️. Найти последовательности из одной заглавной буквы и следующих за ней строчных букв
+pattern4 = r'[A-Z][a-z]+'
+text4 = "Hello world This Is Regex"
+print("4:", re.findall(pattern4, text4))
+
+# 5️. Найти строку, где 'a' за которым следует что угодно и строка заканчивается на 'b'
+pattern5 = r'a.*b$'
+test5 = ["a123b", "ab", "a_b", "ac"]
+for s in test5:
+    if re.fullmatch(pattern5, s):
+        print("5:", s, "→ match")
+
+# 6️. Заменить все пробелы, запятые и точки на двоеточие
+pattern6 = r'[ ,.]'
+text6 = "Hello, world. How are you?"
+print("6:", re.sub(pattern6, ":", text6))
+
+# 7️. Преобразовать snake_case в camelCase
+def snake_to_camel(s):
+    parts = s.split('_')
+    return parts[0] + ''.join(p.title() for p in parts[1:])
+print("7:", snake_to_camel("python_reg_ex_lab"))
+
+# 8️. Разделить строку по заглавным буквам
+pattern8 = r'(?=[A-Z])'
+text8 = "RegularExpressionExample"
+print("8:", re.split(pattern8, text8))
+
+# 9️. Вставить пробелы между словами, начинающимися с заглавной буквы
+pattern9 = r'([a-z])([A-Z])'
+text9 = "ThisIsCamelCaseText"
+print("9:", re.sub(pattern9, r'\1 \2', text9))
+
+# 10. Преобразовать camelCase в snake_case
+def camel_to_snake(s):
+    return re.sub(r'(?<!^)(?=[A-Z])', '_', s).lower()
+print("10:", camel_to_snake("CamelCaseString"))
+
+
