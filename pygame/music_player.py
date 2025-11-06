@@ -21,8 +21,8 @@ songs = [
     r"c:\Users\orazt\Downloads\Rihanna feat Jay-Z - Umbrella.mp3",
     r"c:\Users\orazt\Downloads\Kendrick Lamar - Money Trees (Feat. Jay Rock).mp3"
 ]
-current_index = 0
-is_playing = False
+current_index = 0 #индекс текущей песни.
+is_playing = False #логическая переменная, показывает играет ли музыка.
 
 # Шрифты для отображения текста 
 font = pygame.font.SysFont(None, 30)
@@ -31,9 +31,9 @@ def draw_text(text, pos):
     img = font.render(text, True, BLACK)
     screen.blit(img, pos)
 
-def play_song(index):
+def play_song(index): #загружает и воспроизводит выбранную песню.
     global is_playing
-    pygame.mixer.music.load(songs[index])
+    pygame.mixer.music.load(songs[index]) 
     pygame.mixer.music.play()
     is_playing = True
 
@@ -47,7 +47,7 @@ clock = pygame.time.Clock()
 running = True
 
 while running:
-    screen.fill(WHITE)
+    screen.fill(WHITE) #заливает фон белым цветом.
 
     # Отображение информации 
     draw_text(f"Current song: {songs[current_index].split('/')[-1]}", (20, 50))
